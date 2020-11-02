@@ -7,6 +7,7 @@ public class TargetItem : MonoBehaviour
     public Transform from;
     public Camera cam;
     public float? distance;
+    public Vector3 dir;
 
     // Update is called once per frame
     void Update()
@@ -15,7 +16,7 @@ public class TargetItem : MonoBehaviour
 
         mp.z = 1f;
 
-        Vector3 dir = from.position - mp;
+        dir = from.position - mp;
 
         if (!distance.HasValue || dir.magnitude < distance.Value)
         {
