@@ -18,6 +18,8 @@ public class ItemController : MonoBehaviour
     {
         if (currentItem != null)
         {
+            currentItem.target = target;
+
             target.distance = currentItem.reachDistance;
         }
         else

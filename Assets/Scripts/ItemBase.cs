@@ -5,4 +5,5 @@ using UnityEngine;
 public abstract class ItemBase : MonoBehaviour
 {
     public float? reachDistance;
+    public TargetItem target;
 }
