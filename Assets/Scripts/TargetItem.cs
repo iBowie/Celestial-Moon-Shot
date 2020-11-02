@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TargetItem : MonoBehaviour
 {
-    public PlayerMovementController pmc;
+    public Transform from;
     public Camera cam;
+    public float? distance;
 
     // Update is called once per frame
     void Update()
@@ -14,6 +15,17 @@ public class TargetItem : MonoBehaviour
 
         mp.z = 1f;
 
-        this.transform.position = mp;
+        Vector3 dir = from.position - mp;
+
+        if (!distance.HasValue || dir.magnitude < distance.Value)
+        {
+            this.transform.position = mp;
+        }
+        else
+        {
+            var norm = dir.normalized;
+
+            this.transform.position = from.position - (norm * distance.Value);
+        }
     }
 }
