@@ -21,11 +21,11 @@ public class TestGun : ItemBase
     {
         if (Input.GetMouseButtonDown(0))
         {
-            var force = target.dir * -10f;
+            var force = target.dir.normalized * -100f;
 
             var nObj = GameObject.Instantiate(bullet);
 
-            nObj.transform.position = target.transform.position;
+            nObj.transform.position = target.from.position;
             nObj.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
         }
     }
