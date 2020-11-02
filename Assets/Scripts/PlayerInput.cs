@@ -17,13 +17,18 @@ public class PlayerInput : MonoBehaviour
     void Update()
     {
         bool jump = false;
-        bool crouch = false;
+        bool sprint = false;
         float move = 0f;
 
         if (Input.GetKey(KeyCode.Space) || Input.GetButton("Jump"))
         {
             jump = true;
             animator.SetBool("IsJumping", true);
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            sprint = true;
         }
 
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
@@ -40,8 +45,9 @@ public class PlayerInput : MonoBehaviour
         }
 
         animator.SetFloat("Speed", Mathf.Abs(move));
+        animator.SetBool("IsSprinting", sprint);
 
-        pmc.Move(move, crouch, jump);
+        pmc.Move(move, sprint, jump);
     }
 
     public void StopJump()
