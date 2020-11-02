@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 
+[ExecuteInEditMode]
 public class LockRotationRelative : MonoBehaviour
 {
     public Transform target;
