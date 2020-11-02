@@ -57,14 +57,18 @@ public class PlayerMovementController : MonoBehaviour
 		//only control the player if grounded or airControl is turned on
 		if (m_Grounded || m_AirControl)
 		{
-			if (sprint)
-			{
-				transform.Translate(new Vector2(move * m_RunSpeed, 0), Space.Self);
-			}
-            else
-            {
-				transform.Translate(new Vector2(move * m_Speed, 0), Space.Self);
-            }
+			float speed = sprint ? m_RunSpeed : m_Speed;
+
+			Vector2 targetVelocity = transform.TransformDirection(new Vector2(move, 0) * speed);
+
+			Vector2 velocity = transform.InverseTransformDirection(m_Rigidbody2D.velocity);
+			velocity = transform.TransformDirection(velocity);
+			Vector2 velocityChange = transform.InverseTransformDirection(targetVelocity - velocity);
+			velocityChange.x = Mathf.Clamp(velocityChange.x, -speed, speed);
+			velocityChange.y = 0;
+			velocityChange = transform.TransformDirection(velocityChange);
+
+			m_Rigidbody2D.AddForce(velocityChange);
 
 			var angleDir = getAngleDir(transform.forward, m_Target.position, transform.up);
 
