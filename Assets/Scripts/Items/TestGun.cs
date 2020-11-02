@@ -9,14 +9,9 @@ public class TestGun : ItemBase
     public TestGun()
     {
         reachDistance = null;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+        displayName = "Test Gun";
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))

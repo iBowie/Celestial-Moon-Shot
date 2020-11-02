@@ -36,6 +36,5 @@ public class PlayerInventory : MonoBehaviour
 [Serializable]
 public class InventoryItemData
 {
-    public string name;
     public GameObject prefab;
 }
