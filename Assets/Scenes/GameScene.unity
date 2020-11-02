@@ -328,10 +328,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Current <size=26><i>relative</I></size> Moon Speed: 0 m/s
-
-    Passed
-    Distance: 0 meters'
+  m_Text: 
 --- !u!222 &1103919464
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -745,6 +742,7 @@ GameObject:
   - component: {fileID: 1581509628}
   - component: {fileID: 1581509627}
   - component: {fileID: 1581509626}
+  - component: {fileID: 1581509630}
   m_Layer: 10
   m_Name: Moon
   m_TagString: Untagged
@@ -833,6 +831,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1581509630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1581509625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc93e27f58e04624b92575fa2afb87b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentSpeed: 0.01
+  totalDistance: 0
+  UIText: {fileID: 1103919463}
 --- !u!4 &1770881255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 663413887558956268, guid: ce4560b00bf32274797efeef18cf5e23, type: 3}
