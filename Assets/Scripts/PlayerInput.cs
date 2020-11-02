@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerMovementController))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(PlayerInventory))]
 public class PlayerInput : MonoBehaviour
 {
     PlayerMovementController pmc;
     Animator animator;
+    PlayerInventory inv;
     // Start is called before the first frame update
     void Start()
     {
         pmc = GetComponent<PlayerMovementController>();
         animator = GetComponent<Animator>();
+        inv = GetComponent<PlayerInventory>();
     }
 
     // Update is called once per frame
@@ -46,6 +51,37 @@ public class PlayerInput : MonoBehaviour
 
         animator.SetFloat("Speed", Mathf.Abs(move));
         animator.SetBool("IsSprinting", sprint);
+
+        var scr = Input.GetAxis("Mouse ScrollWheel");
+
+        if (scr > 0)
+        {
+            if (inv.items.Count > 0)
+            {
+                if (inv.selectedItem > 0)
+                {
+                    inv.selectedItem--;
+                }
+                else
+                {
+                    inv.selectedItem = inv.items.Count - 1;
+                }
+            }
+        }
+        else if (scr < 0)
+        {
+            if (inv.items.Count > 0)
+            {
+                if (inv.selectedItem < inv.items.Count - 1)
+                {
+                    inv.selectedItem++;
+                }
+                else
+                {
+                    inv.selectedItem = 0;
+                }
+            }
+        }
 
         pmc.Move(move, sprint, jump);
     }
