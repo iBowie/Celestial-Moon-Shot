@@ -96,4 +96,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  displayName: Test Gun
   bullet: {fileID: 7467605483077729814, guid: baad3cccc34b5c247af1a3fa25ec63fd, type: 3}

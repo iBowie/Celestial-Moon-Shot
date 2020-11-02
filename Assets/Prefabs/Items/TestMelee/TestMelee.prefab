@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  displayName: Test Melee
 --- !u!1 &4263176441413856363
 GameObject:
   m_ObjectHideFlags: 0
