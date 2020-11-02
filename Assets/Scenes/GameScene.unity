@@ -492,7 +492,7 @@ MonoBehaviour:
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1025
   m_GroundCheck: {fileID: 1218751712}
   m_HandRotation: {fileID: 1078068022}
   m_Target: {fileID: 1786709795}
