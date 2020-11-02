@@ -560,8 +560,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1172063332}
-  LockX: 0
-  LockY: 0
+  LockX: 1
+  LockY: 1
   LockZ: 0
   Offset: {x: 0, y: 0, z: 0}
 --- !u!95 &1360727230
