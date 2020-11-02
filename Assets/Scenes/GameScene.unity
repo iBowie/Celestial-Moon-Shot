@@ -843,9 +843,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc93e27f58e04624b92575fa2afb87b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSpeed: 0.01
+  currentSpeed: 0
   totalDistance: 0
   UIText: {fileID: 1103919463}
+  particles: {fileID: 0}
 --- !u!4 &1770881255 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 663413887558956268, guid: ce4560b00bf32274797efeef18cf5e23, type: 3}
