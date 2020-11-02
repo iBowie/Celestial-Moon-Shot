@@ -66,11 +66,16 @@ public class PlayerMovementController : MonoBehaviour
 				transform.Translate(new Vector2(move * m_Speed, 0), Space.Self);
             }
 
-			if (m_Target.position.x > transform.position.x && !m_FacingRight)
-				Flip();
-			else if (m_Target.position.x < transform.position.x && m_FacingRight)
-				Flip();
-		}
+			var angleDir = getAngleDir(transform.forward, m_Target.position, transform.up);
+
+			switch (angleDir)
+            {
+				case 1 when !m_FacingRight:
+				case -1 when m_FacingRight:
+					Flip();
+					break;
+            }
+        }
 		// If the player should jump...
 		if (m_Grounded && jump)
 		{
@@ -80,6 +85,24 @@ public class PlayerMovementController : MonoBehaviour
 		}
 	}
 
+	int getAngleDir(Vector3 fwd, Vector3 target, Vector3 up)
+    {
+		Vector3 perp = Vector3.Cross(fwd, target);
+		float dir = Vector3.Dot(perp, up);
+
+		if (dir > 0f)
+		{
+			return 1;
+		}
+		else if (dir < 0f)
+		{
+			return -1;
+		}
+		else
+		{
+			return 0;
+		}
+	}
 
 	private void Flip()
 	{
