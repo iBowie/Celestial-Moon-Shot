@@ -218,6 +218,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a968a25ec1621774a940300bb8a3c944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  bullet: {fileID: 7467605483077729814, guid: baad3cccc34b5c247af1a3fa25ec63fd, type: 3}
 --- !u!1 &1078068019
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   from: {fileID: 1078068020}
   cam: {fileID: 1848557217}
+  dir: {x: 0, y: 0, z: 0}
 --- !u!1 &1848557215
 GameObject:
   m_ObjectHideFlags: 0
