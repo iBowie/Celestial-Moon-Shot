@@ -6,7 +6,6 @@ public class Attractor : MonoBehaviour
 {
     const float G = 667.4f;
     public float mass;
-    public float gravity;
 
     private void FixedUpdate()
     {
