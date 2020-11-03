@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 [ExecuteInEditMode]
-public class Harmable : MonoBehaviour
+public class Harmable : MonoBehaviour, IHasToolTip
 {
     public float health;
     public float maxHealth;
@@ -12,6 +12,8 @@ public class Harmable : MonoBehaviour
     public bool hasInvincibilityTime;
 
     public float healthPercentage => health / maxHealth;
+
+    public string ToolTip => $"{health:N0}/{maxHealth:N0}";
 
     public Image healthBarImage;
     public AudioSource audioSource;
