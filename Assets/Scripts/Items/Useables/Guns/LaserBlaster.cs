@@ -1,4 +1,4 @@
-﻿public class LaserBlaster : GunBase
+﻿public class LaserBlaster : UseableItemGun
 {
     public LaserBlaster()
     {
