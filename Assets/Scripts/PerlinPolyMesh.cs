@@ -15,7 +15,8 @@ public class PerlinPolyMesh : MonoBehaviour
     public float minRadius;
     [Range(0f, float.MaxValue)]
     public float scale;
-    public uint count;
+    public int count;
+    public bool generateNow;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,17 +27,19 @@ public class PerlinPolyMesh : MonoBehaviour
     }
 
     private float oldRadius, oldCount, oldScale;
+    private bool oldGenerateNow;
     private void Update()
     {
         if (Application.isEditor)
         {
-            if (minRadius != oldRadius || count != oldCount || scale != oldScale)
+            if (generateNow != oldGenerateNow || minRadius != oldRadius || count != oldCount || scale != oldScale)
             {
                 Generate();
             }
             oldRadius = minRadius;
             oldCount = count;
             oldScale = scale;
+            oldGenerateNow = generateNow;
         }
     }
 
