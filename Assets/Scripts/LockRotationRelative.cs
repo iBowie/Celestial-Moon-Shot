@@ -12,6 +12,11 @@ public class LockRotationRelative : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (target == null)
+        {
+            target = GameObject.FindGameObjectWithTag("MainCenter").transform;
+        }
+
         var old = this.transform.rotation;
 
         this.transform.up = -(target.position - this.transform.position);
