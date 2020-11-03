@@ -9,6 +9,7 @@ public class Projectile : MonoBehaviour
     public float travelDistance;
     public LayerMask destroyLayerMask;
     public string[] affectedTags;
+    public float knockback;
 
     private Vector3 lastDistance;
 
@@ -24,7 +25,9 @@ public class Projectile : MonoBehaviour
         {
             if (affectedTags != null && affectedTags.Contains(collision.tag))
             {
-                harmable.Harm(damage);
+                Vector2 dir = (harmable.transform.position - transform.position).normalized;
+
+                harmable.Harm(damage, dir * knockback);
             }
         }
 

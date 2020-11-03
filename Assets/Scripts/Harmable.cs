@@ -8,14 +8,18 @@ public class Harmable : MonoBehaviour
 {
     public float health;
     public float maxHealth;
+    public bool knockbackResistant;
+    public bool hasInvincibilityTime;
 
     public float healthPercentage => health / maxHealth;
 
     public Image healthBarImage;
     public AudioSource audioSource;
     public AudioClip hitSound;
+    public Rigidbody2D rigid;
 
     private float lastHealth, lastMaxHealth;
+    private float lastHit;
 
     private void Start()
     {
@@ -31,8 +35,23 @@ public class Harmable : MonoBehaviour
         UpdateHealthBar();
     }
 
-    public void Harm(float damage)
+    public void Harm(float damage, Vector2 force)
     {
+        if (hasInvincibilityTime)
+        {
+            if (Time.time - lastHit <= 0.5f)
+            {
+                return;
+            }
+        }
+
+        lastHit = Time.time;
+
+        if (!knockbackResistant)
+        {
+            rigid.AddForce(force);
+        }
+
         OnHarm.Invoke(damage);
 
         health -= damage;
