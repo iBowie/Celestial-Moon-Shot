@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MoonSpeedController : MonoBehaviour
 {
     public static MoonSpeedController Instance { get; private set; }
 
-    public float currentSpeed = 0f;
-    public float totalDistance = 0f;
+    public static float currentSpeed = 0f;
+    public static float totalDistance = 0f;
 
     public Text UIText;
     public ParticleSystem particles;
@@ -17,6 +18,9 @@ public class MoonSpeedController : MonoBehaviour
     void Start()
     {
         Instance = this;
+
+        currentSpeed = 0f;
+        totalDistance = 0f;
     }
 
     void FixedUpdate()
@@ -29,7 +33,13 @@ public class MoonSpeedController : MonoBehaviour
         UIText.text = $"Current Moon Speed: {spdValue:0.##} {spdUnits}/s\nTotal Distance: {disValue:0.##} {disUnits}";
     }
 
-    void toDisplay(float value, out float visibleValue, out string units)
+    public void GoToFinalScore()
+    {
+        SceneManager.LoadScene(2);
+        SceneManager.SetActiveScene(SceneManager.GetSceneAt(2));
+    }
+
+    public static void toDisplay(float value, out float visibleValue, out string units)
     {
         if (value > 1000f)
         {

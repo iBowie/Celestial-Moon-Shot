@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 6480b9e4988e26d41ab5d08314200966
+  - enabled: 1
+    path: Assets/Scenes/FinalScoreScreen.unity
+    guid: 42508a931ec49cb448b9f212a2b4c03e
   m_configObjects: {}
