@@ -2,7 +2,6 @@
 
 public class ItemBase : MonoBehaviour
 {
-    public string displayName;
     public float? reachDistance;
 
     [HideInInspector]

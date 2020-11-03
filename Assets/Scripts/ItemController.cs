@@ -1,11 +1,11 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemController : MonoBehaviour
 {
     private ItemBase currentItem;
+    protected InventoryItemData currentItemData;
     public TargetItem target;
     public Text nameText;
 
@@ -32,7 +32,8 @@ public class ItemController : MonoBehaviour
         }
 
         currentItem = GameObject.Instantiate<GameObject>(iid.prefab, this.transform).GetComponent<ItemBase>();
+        currentItemData = iid;
 
-        nameText.text = $"Current Item: {currentItem.displayName}";
+        nameText.text = $"Current Item: {iid.displayName}";
     }
 }

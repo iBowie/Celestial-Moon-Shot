@@ -119,7 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemData:
+    texture: {fileID: 0}
     prefab: {fileID: 0}
+  spriteRenderer: {fileID: 1594822466929688451}
 --- !u!50 &1148965193566869537
 Rigidbody2D:
   serializedVersion: 4
