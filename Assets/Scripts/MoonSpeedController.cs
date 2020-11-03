@@ -41,7 +41,12 @@ public class MoonSpeedController : MonoBehaviour
 
     public static void toDisplay(float value, out float visibleValue, out string units)
     {
-        if (value > 1000f)
+        if (value > 149600000f)
+        {
+            visibleValue = value / 149600000f;
+            units = "au";
+        }
+        else if (value > 1000f)
         {
             visibleValue = value / 1000f;
             units = "km";
