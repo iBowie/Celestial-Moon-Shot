@@ -12,6 +12,8 @@ public class Harmable : MonoBehaviour
     public float healthPercentage => health / maxHealth;
 
     public Image healthBarImage;
+    public AudioSource audioSource;
+    public AudioClip hitSound;
 
     private float lastHealth, lastMaxHealth;
 
@@ -34,6 +36,11 @@ public class Harmable : MonoBehaviour
         OnHarm.Invoke(damage);
 
         health -= damage;
+
+        if (audioSource != null)
+        {
+            audioSource.PlayOneShot(hitSound);
+        }
 
         if (health <= 0)
         {
