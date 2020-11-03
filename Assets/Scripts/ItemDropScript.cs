@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class ItemDropScript : MonoBehaviour
+public class ItemDropScript : MonoBehaviour, IHasToolTip
 {
     private InventoryItemData itemData;
 
     public byte itemId;
     public SpriteRenderer spriteRenderer;
+
+    public string ToolTip => itemData == null ? "" : itemData.displayName;
 
     private void Update()
     {
