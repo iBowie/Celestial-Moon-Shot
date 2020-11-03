@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -7,6 +8,7 @@ public class Projectile : MonoBehaviour
     public float damage;
     public float travelDistance;
     public LayerMask destroyLayerMask;
+    public string[] affectedTags;
 
     private Vector3 lastDistance;
 
@@ -20,10 +22,13 @@ public class Projectile : MonoBehaviour
         var harmable = collision.gameObject.GetComponent<Harmable>();
         if (harmable != null)
         {
-            harmable.Harm(damage);
+            if (affectedTags != null && affectedTags.Contains(collision.tag))
+            {
+                harmable.Harm(damage);
+            }
         }
 
-        if ((destroyLayerMask.value & collision.gameObject.layer) != 0)
+        if (destroyLayerMask == (destroyLayerMask | (1 << collision.gameObject.layer)))
         {
             Destroy(this.gameObject);
         }

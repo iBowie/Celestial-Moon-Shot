@@ -149,3 +149,5 @@ MonoBehaviour:
   destroyLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  affectedTags:
+  - Enemy
