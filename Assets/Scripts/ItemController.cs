@@ -8,6 +8,7 @@ public class ItemController : MonoBehaviour
     protected InventoryItemData currentItemData;
     public TargetItem target;
     public Text nameText;
+    public PlayerInventory inventory;
 
     // Update is called once per frame
     void Update()
@@ -31,9 +32,19 @@ public class ItemController : MonoBehaviour
             Destroy(currentItem.gameObject);
         }
 
-        currentItem = GameObject.Instantiate<GameObject>(iid.prefab, this.transform).GetComponent<ItemBase>();
-        currentItemData = iid;
+        if (iid != null)
+        {
+            currentItem = GameObject.Instantiate<GameObject>(iid.prefab, this.transform).GetComponent<ItemBase>();
+            currentItemData = iid;
 
-        nameText.text = $"Current Item: {iid.displayName}";
+            nameText.text = $"Current Item: {iid.displayName}";
+        }
+        else
+        {
+            currentItem = null;
+            currentItemData = null;
+
+            nameText.text = $"Current Item: none";
+        }
     }
 }

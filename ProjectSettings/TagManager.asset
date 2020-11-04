@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - MainCenter
   - Meteorite
+  - Build
+  - Preview
   layers:
   - Default
   - TransparentFX
@@ -24,8 +26,8 @@ TagManager:
   - Projectile
   - Drops
   - Meteorite
-  - 
-  - 
+  - Build
+  - Preview
   - 
   - 
   - 

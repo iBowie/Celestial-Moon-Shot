@@ -17,4 +17,11 @@ public class ItemBase : MonoBehaviour
     {
 
     }
+
+    public void Consume()
+    {
+        controller.inventory.items.RemoveAt(controller.inventory.selectedItem);
+        controller.inventory.selectedItem = -1;
+        controller.SetCurrentItem(null);
+    }
 }

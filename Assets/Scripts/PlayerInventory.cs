@@ -15,6 +15,7 @@ public class PlayerInventory : MonoBehaviour
             _selectedItem = value;
             if (_selectedItem >= 0)
             {
+                itemController.inventory = this;
                 itemController.SetCurrentItem(items[value]);
             }
         }
