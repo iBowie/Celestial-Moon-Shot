@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.Items.Useables.Build
 {
@@ -44,7 +45,10 @@ namespace Assets.Scripts.Items.Useables.Build
             currentPreview.transform.position = targetPos;
             currentPreview.transform.rotation = targetRot;
 
-            isPossible = !currentPreviewCollider.IsTouchingLayers(blockMask);
+            List<Collider2D> results = new List<Collider2D>();
+            Physics2D.OverlapCollider(currentPreviewCollider, new ContactFilter2D() { useLayerMask = true, layerMask = blockMask }, results);
+
+            isPossible = results.Count == 0;
 
             if (isPossible)
             {
