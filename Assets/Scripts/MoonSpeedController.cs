@@ -12,6 +12,7 @@ public class MoonSpeedController : MonoBehaviour
     public static float currentSpeed = 0f;
     public static float totalDistance = 0f;
 
+    public float parallax;
     public Text UIText;
     public ParticleSystem particles;
     public float editorSpeed;
@@ -43,7 +44,7 @@ public class MoonSpeedController : MonoBehaviour
         {
             var ps = particles;
             var v = ps.velocityOverLifetime;
-            v.speedModifierMultiplier = currentSpeed;
+            v.speedModifierMultiplier = currentSpeed * parallax;
         }
         oldCurrentSpeed = currentSpeed;
     }
