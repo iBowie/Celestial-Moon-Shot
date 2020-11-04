@@ -11,8 +11,11 @@ namespace Assets.Scripts.Items.Useables.Build
         private GameObject currentPreview;
         private SpriteRenderer currentPreviewRenderer;
         private Collider2D currentPreviewCollider;
+        private Transform currentPreviewGround;
 
         private LayerMask blockMask;
+        private ContactFilter2D contactFilter;
+        private float offsetY;
 
         public UseableItemBuild()
         {
@@ -26,6 +29,11 @@ namespace Assets.Scripts.Items.Useables.Build
             currentPreview = GameObject.Instantiate(previewPrefab);
             currentPreviewRenderer = currentPreview.GetComponent<SpriteRenderer>();
             currentPreviewCollider = currentPreview.GetComponent<Collider2D>();
+            currentPreviewGround = currentPreview.transform.Find("Ground");
+
+            contactFilter = new ContactFilter2D() { useLayerMask = true, layerMask = blockMask };
+
+            offsetY = currentPreviewGround.transform.position.y;
         }
 
         private void OnDestroy()
@@ -42,11 +50,26 @@ namespace Assets.Scripts.Items.Useables.Build
             var targetPos = target.transform.position;
             var targetRot = target.transform.rotation;
 
-            currentPreview.transform.position = targetPos;
+            var cast = Physics2D.Raycast(targetPos, -target.transform.up, 8f, blockMask);
+            if (cast.transform != null)
+            {
+                Vector3 dir = targetPos - (Vector3)cast.point;
+
+                var normalized = dir.normalized;
+
+                normalized *= cast.distance + offsetY;
+
+                currentPreview.transform.position = targetPos - normalized;
+            }
+            else
+            {
+                currentPreview.transform.position = targetPos;
+            }
+
             currentPreview.transform.rotation = targetRot;
 
             List<Collider2D> results = new List<Collider2D>();
-            Physics2D.OverlapCollider(currentPreviewCollider, new ContactFilter2D() { useLayerMask = true, layerMask = blockMask }, results);
+            Physics2D.OverlapCollider(currentPreviewCollider, contactFilter, results);
 
             isPossible = results.Count == 0;
 
