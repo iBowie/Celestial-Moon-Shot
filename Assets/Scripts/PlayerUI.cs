@@ -34,9 +34,8 @@ public class PlayerUI : MonoBehaviour
 
         if (!isInventoryOpen)
         {
-            int childCount = inventoryPanelContent.transform.childCount;
-            for (int i = 0; i < childCount; i++)
-                GameObject.Destroy(inventoryPanelContent.transform.GetChild(0).gameObject);
+            foreach (Transform t in inventoryPanelContent.transform)
+                GameObject.Destroy(t.gameObject);
 
             foreach (var i in inventory.GetAllItems())
             {
