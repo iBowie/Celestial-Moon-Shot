@@ -10,20 +10,25 @@ public class PlayerInput : MonoBehaviour
     PlayerMovementController pmc;
     Animator animator;
     PlayerInventory inv;
+    PlayerUI ui;
+
+    private bool jump, sprint;
+    private float move;
     // Start is called before the first frame update
     void Start()
     {
         pmc = GetComponent<PlayerMovementController>();
         animator = GetComponent<Animator>();
         inv = GetComponent<PlayerInventory>();
+        ui = GetComponent<PlayerUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        bool jump = false;
-        bool sprint = false;
-        float move = 0f;
+        jump = false;
+        sprint = false;
+        move = 0f;
 
         if (Input.GetKey(KeyCode.Space) || Input.GetButton("Jump"))
         {
@@ -83,6 +88,17 @@ public class PlayerInput : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.I) || Input.GetKeyDown(KeyCode.Tab))
+        {
+            ui.ToggleInventory();
+        }
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ui.ToggleCrafting();
+        }
+    }
+    private void FixedUpdate()
+    {
         pmc.Move(move, sprint, jump);
     }
 
