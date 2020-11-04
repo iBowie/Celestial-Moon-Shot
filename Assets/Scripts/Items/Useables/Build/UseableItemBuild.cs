@@ -15,7 +15,7 @@ namespace Assets.Scripts.Items.Useables.Build
 
         public UseableItemBuild()
         {
-            reachDistance = null;
+            reachDistance = 10f;
         }
 
         protected override void PostAwake()
