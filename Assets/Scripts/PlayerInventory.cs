@@ -98,6 +98,10 @@ public class PlayerInventory : MonoBehaviour
         return res;
     }
     public int UniqueItems => items.Count;
+    public IEnumerable<InventoryItemData> GetAllItems()
+    {
+        return items;
+    }
 }
 
 [Serializable]
@@ -105,6 +109,7 @@ public class InventoryItemData : ICloneable
 {
     public ushort id;
     public string displayName;
+    public string description;
     public Sprite texture;
     public GameObject prefab;
     public ulong maxCount;
@@ -117,6 +122,7 @@ public class InventoryItemData : ICloneable
         {
             id = id,
             displayName = displayName,
+            description = description,
             texture = texture,
             prefab = prefab,
             maxCount = maxCount,

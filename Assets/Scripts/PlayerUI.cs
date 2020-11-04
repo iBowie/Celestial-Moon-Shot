@@ -7,6 +7,9 @@ public class PlayerUI : MonoBehaviour
     public GameObject inventoryPanel;
     public GameObject craftingPanel;
 
+    public GameObject inventoryPanelContent;
+    public GameObject inventoryPanelItemPrefab;
+
     private bool isInventoryOpen, isCraftingOpen;
 
     public void ToggleInventory()
@@ -31,6 +34,17 @@ public class PlayerUI : MonoBehaviour
 
         if (!isInventoryOpen)
         {
+            int childCount = inventoryPanelContent.transform.childCount;
+            for (int i = 0; i < childCount; i++)
+                GameObject.Destroy(inventoryPanelContent.transform.GetChild(0).gameObject);
+
+            foreach (var i in inventory.GetAllItems())
+            {
+                var obj = GameObject.Instantiate(inventoryPanelItemPrefab, inventoryPanelContent.transform);
+                ItemUIScript itemUIScript = obj.GetComponent<ItemUIScript>();
+                itemUIScript.itemData = i;
+            }
+
             inventoryPanel.SetActive(true);
 
             isInventoryOpen = true;
