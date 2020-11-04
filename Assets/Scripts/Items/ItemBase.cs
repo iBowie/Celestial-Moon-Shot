@@ -18,9 +18,9 @@ public class ItemBase : MonoBehaviour
 
     }
 
-    public void Consume()
+    public void Consume(ulong amount = 1)
     {
-        controller.inventory.items.RemoveAt(controller.inventory.selectedItem);
+        controller.inventory.RemoveItem(controller.inventory.itemController.currentItemData.id, amount);
         controller.inventory.selectedItem = -1;
         controller.SetCurrentItem(null);
     }

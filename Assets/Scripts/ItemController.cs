@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class ItemController : MonoBehaviour
 {
     private ItemBase currentItem;
-    protected InventoryItemData currentItemData;
+    [HideInInspector]
+    public InventoryItemData currentItemData;
     public TargetItem target;
     public Text nameText;
     public PlayerInventory inventory;
@@ -34,7 +35,10 @@ public class ItemController : MonoBehaviour
 
         if (iid != null)
         {
-            currentItem = GameObject.Instantiate<GameObject>(iid.prefab, this.transform).GetComponent<ItemBase>();
+            if (iid.isUseable)
+            {
+                currentItem = GameObject.Instantiate<GameObject>(iid.prefab, this.transform).GetComponent<ItemBase>();
+            }
             currentItemData = iid;
 
             nameText.text = $"Current Item: {iid.displayName}";

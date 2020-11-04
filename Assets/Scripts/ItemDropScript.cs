@@ -7,7 +7,8 @@ public class ItemDropScript : MonoBehaviour, IHasToolTip
 {
     private InventoryItemData itemData;
 
-    public byte itemId;
+    public ushort itemId;
+    public ulong itemCount;
     public SpriteRenderer spriteRenderer;
 
     public string ToolTip => itemData == null ? "" : itemData.displayName;
@@ -32,7 +33,7 @@ public class ItemDropScript : MonoBehaviour, IHasToolTip
             var inv = collision.gameObject.GetComponent<PlayerInventory>();
             if (inv != null)
             {
-                inv.items.Add(itemData);
+                inv.AddItem(itemId, itemCount);
                 Destroy(gameObject);
             }
         }

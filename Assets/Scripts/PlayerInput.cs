@@ -56,7 +56,7 @@ public class PlayerInput : MonoBehaviour
 
         if (scr > 0)
         {
-            if (inv.items.Count > 0)
+            if (inv.UniqueItems > 0)
             {
                 if (inv.selectedItem > 0)
                 {
@@ -64,15 +64,15 @@ public class PlayerInput : MonoBehaviour
                 }
                 else
                 {
-                    inv.selectedItem = inv.items.Count - 1;
+                    inv.selectedItem = inv.UniqueItems - 1;
                 }
             }
         }
         else if (scr < 0)
         {
-            if (inv.items.Count > 0)
+            if (inv.UniqueItems > 0)
             {
-                if (inv.selectedItem < inv.items.Count - 1)
+                if (inv.selectedItem < inv.UniqueItems - 1)
                 {
                     inv.selectedItem++;
                 }
