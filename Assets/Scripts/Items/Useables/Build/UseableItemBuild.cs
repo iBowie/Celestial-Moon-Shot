@@ -7,6 +7,7 @@ namespace Assets.Scripts.Items.Useables.Build
     {
         public GameObject previewPrefab;
         public GameObject buildPrefab;
+        public bool allowBuildInAir;
 
         private GameObject currentPreview;
         private SpriteRenderer currentPreviewRenderer;
@@ -14,6 +15,7 @@ namespace Assets.Scripts.Items.Useables.Build
         private Transform currentPreviewGround;
 
         private LayerMask blockMask;
+        private LayerMask snapMask;
         private ContactFilter2D contactFilter;
         private float offsetY;
 
@@ -25,6 +27,7 @@ namespace Assets.Scripts.Items.Useables.Build
         protected override void PostAwake()
         {
             blockMask = LayerMask.GetMask("Item", "Enemy", "Player", "Ground", "Build");
+            snapMask = LayerMask.GetMask("Ground", "Build");
 
             currentPreview = GameObject.Instantiate(previewPrefab);
             currentPreviewRenderer = currentPreview.GetComponent<SpriteRenderer>();
@@ -50,7 +53,9 @@ namespace Assets.Scripts.Items.Useables.Build
             var targetPos = target.transform.position;
             var targetRot = target.transform.rotation;
 
-            var cast = Physics2D.Raycast(targetPos, -target.transform.up, 8f, blockMask);
+            bool isInAir;
+
+            var cast = Physics2D.Raycast(targetPos, -target.transform.up, 8f, snapMask);
             if (cast.transform != null)
             {
                 Vector3 dir = targetPos - (Vector3)cast.point;
@@ -60,10 +65,14 @@ namespace Assets.Scripts.Items.Useables.Build
                 normalized *= cast.distance + offsetY;
 
                 currentPreview.transform.position = targetPos - normalized;
+
+                isInAir = false;
             }
             else
             {
                 currentPreview.transform.position = targetPos;
+                
+                isInAir = true;
             }
 
             currentPreview.transform.rotation = targetRot;
@@ -71,7 +80,7 @@ namespace Assets.Scripts.Items.Useables.Build
             List<Collider2D> results = new List<Collider2D>();
             Physics2D.OverlapCollider(currentPreviewCollider, contactFilter, results);
 
-            isPossible = results.Count == 0;
+            isPossible = (results.Count == 0) && ((allowBuildInAir && isInAir) || (!isInAir));
 
             if (isPossible)
             {
