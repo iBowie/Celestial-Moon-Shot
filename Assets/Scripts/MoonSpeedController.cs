@@ -15,7 +15,6 @@ public class MoonSpeedController : MonoBehaviour
     public float parallax;
     public Text UIText;
     public ParticleSystem particles;
-    public float editorSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -28,11 +27,6 @@ public class MoonSpeedController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Application.isEditor)
-        {
-            currentSpeed = editorSpeed;
-        }
-
         totalDistance += (currentSpeed / 50f);
 
         toDisplay(totalDistance, out float disValue, out string disUnits);
