@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovementController))]
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerInventory))]
 public class PlayerInput : MonoBehaviour
 {
     PlayerMovementController pmc;
-    Animator animator;
+    MovementAnimator animator;
     PlayerInventory inv;
     PlayerUI ui;
 
@@ -16,7 +15,7 @@ public class PlayerInput : MonoBehaviour
     void Start()
     {
         pmc = GetComponent<PlayerMovementController>();
-        animator = GetComponent<Animator>();
+        animator = GetComponent<MovementAnimator>();
         inv = GetComponent<PlayerInventory>();
         ui = GetComponent<PlayerUI>();
     }
@@ -31,7 +30,7 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) || Input.GetButton("Jump"))
         {
             jump = true;
-            animator.SetBool("IsJumping", true);
+            animator.StartJump();
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -52,8 +51,11 @@ public class PlayerInput : MonoBehaviour
             move = Input.GetAxis("Horizontal");
         }
 
-        animator.SetFloat("Speed", Mathf.Abs(move));
-        animator.SetBool("IsSprinting", sprint);
+        animator.SetMove(Mathf.Abs(move));
+        if (sprint)
+            animator.StartSprint();
+        else
+            animator.StopSprint();
 
         if (!PauseManager.IsPaused)
         {
@@ -104,10 +106,5 @@ public class PlayerInput : MonoBehaviour
             return;
 
         pmc.Move(move, sprint, jump);
-    }
-
-    public void StopJump()
-    {
-        animator.SetBool("IsJumping", false);
     }
 }
