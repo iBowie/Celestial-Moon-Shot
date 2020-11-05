@@ -74,7 +74,7 @@ namespace Assets.Scripts.Items.Useables.Build
             else
             {
                 currentPreview.transform.position = targetPos;
-                
+
                 isInAir = true;
             }
 

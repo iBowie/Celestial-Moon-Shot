@@ -4,7 +4,7 @@
 public class ItemDropScript : MonoBehaviour, IHasToolTip
 {
     private InventoryItemData itemData;
-    private float dropTime; 
+    private float dropTime;
 
     public ushort itemId;
     public ulong itemCount;

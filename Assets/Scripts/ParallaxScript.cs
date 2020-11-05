@@ -5,7 +5,7 @@ public class ParallaxScript : MonoBehaviour
     public Transform target;
     public float multiplier;
     public bool lockX, lockY, lockZ;
-    
+
     void Update()
     {
         if (PauseManager.IsPaused)

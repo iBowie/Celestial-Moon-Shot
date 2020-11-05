@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DestroyParticlesOutOfBounds : MonoBehaviour
 {
     public Bounds bounds;
     private ParticleSystem ps;
     private ParticleSystem.Particle[] particles;
-    
+
     void Start()
     {
         ps = GetComponent<ParticleSystem>();

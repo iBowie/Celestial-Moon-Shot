@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -30,7 +29,7 @@ public class Harmable : MonoBehaviour, IHasToolTip
 
         if (OnHarm == null)
             OnHarm = new UnityEvent<float>();
-        
+
         if (OnDeath == null)
             OnDeath = new UnityEvent();
 
