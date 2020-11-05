@@ -9,7 +9,7 @@ public class PlayerMovementController : MonoBehaviour
     [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     [SerializeField] private bool m_AirControl = false;                         // Whether or not a player can steer while jumping;
     [SerializeField] private LayerMask m_WhatIsGround;                          // A mask determining what is ground to the character
-    [SerializeField] private Transform m_GroundCheck;                           // A position marking where to check if the player is grounded.
+    [SerializeField] private Transform[] m_GroundCheck;                           // A position marking where to check if the player is grounded.
     [SerializeField] private LockRotationRelative m_HandRotation;
     [SerializeField] private Transform m_Target;
 
@@ -38,14 +38,17 @@ public class PlayerMovementController : MonoBehaviour
 
         // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         // This can be done using layers instead but Sample Assets will not overwrite your project settings.
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(m_GroundCheck.position, k_GroundedRadius, m_WhatIsGround);
-        for (int i = 0; i < colliders.Length; i++)
+        foreach (var gc in m_GroundCheck)
         {
-            if (colliders[i].gameObject != gameObject)
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(gc.position, k_GroundedRadius, m_WhatIsGround);
+            for (int i = 0; i < colliders.Length; i++)
             {
-                m_Grounded = true;
-                if (!wasGrounded)
-                    OnLandEvent.Invoke();
+                if (colliders[i].gameObject != gameObject)
+                {
+                    m_Grounded = true;
+                    if (!wasGrounded)
+                        OnLandEvent.Invoke();
+                }
             }
         }
     }
