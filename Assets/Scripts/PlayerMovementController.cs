@@ -18,6 +18,8 @@ public class PlayerMovementController : MonoBehaviour
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
     public bool IsFacingRight => m_FacingRight;
+    public Transform Target => m_Target;
+    public LockRotationRelative HandRotation => m_HandRotation;
 
     [Header("Events")]
     [Space]
@@ -124,5 +126,10 @@ public class PlayerMovementController : MonoBehaviour
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    public void SetTarget(Transform newTarget)
+    {
+        this.m_Target = newTarget;
     }
 }

@@ -2,9 +2,11 @@
 {
     public PlayerMovementController movementController;
 
-    private void Awake()
+    private void Start()
     {
         movementController = GetComponent<PlayerMovementController>();
+        movementController.SetTarget(MainPlayer.mainPlayer.transform);
+        movementController.HandRotation.target = MainPlayer.mainPlayer.transform;
     }
 
     private void FixedUpdate()

@@ -4,7 +4,7 @@ public class MainPlayer : MonoBehaviour
 {
     public static MainPlayer mainPlayer { get; private set; }
 
-    void Start()
+    void Awake()
     {
         mainPlayer = this;
     }
