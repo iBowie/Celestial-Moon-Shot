@@ -9,10 +9,12 @@ public class PerlinPolyMesh : MonoBehaviour
     private PolygonCollider2D poly2d;
     private MeshFilter mf;
 
-    [Range(0f, float.MaxValue)]
+    [Range(0f, 100f)]
     public float minRadius;
-    [Range(0f, float.MaxValue)]
-    public float scale;
+    [Range(0.01f, 100f)]
+    public float maxScale;
+    [Range(0.01f, 100f)]
+    public float minScale;
     public int count;
     public bool generateNow;
     // Start is called before the first frame update
@@ -24,19 +26,20 @@ public class PerlinPolyMesh : MonoBehaviour
         Generate();
     }
 
-    private float oldRadius, oldCount, oldScale;
+    private float oldRadius, oldCount, oldMinScale, oldMaxScale;
     private bool oldGenerateNow;
     private void Update()
     {
         if (Application.isEditor)
         {
-            if (generateNow != oldGenerateNow || minRadius != oldRadius || count != oldCount || scale != oldScale)
+            if (generateNow != oldGenerateNow || minRadius != oldRadius || count != oldCount || minScale != oldMinScale || maxScale != oldMaxScale)
             {
                 Generate();
             }
             oldRadius = minRadius;
             oldCount = count;
-            oldScale = scale;
+            oldMinScale = minScale;
+            oldMaxScale = maxScale;
             oldGenerateNow = generateNow;
         }
     }
@@ -49,7 +52,7 @@ public class PerlinPolyMesh : MonoBehaviour
 
         for (i = 0; i < count; i++)
         {
-            float radius = minRadius + Mathf.PerlinNoise((float)i / count, (float)i / count) * scale;
+            float radius = minRadius + Mathf.PerlinNoise((float)i / count, (float)i / count) * Random.Range(minScale, maxScale);
 
             x = Mathf.Sin((2 * Mathf.PI * i) / count);
             y = Mathf.Cos((2 * Mathf.PI * i) / count);

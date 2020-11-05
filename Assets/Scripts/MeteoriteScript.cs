@@ -24,17 +24,6 @@ public class MeteoriteScript : MonoBehaviour
         Physics2D.OverlapCollider(explodeCollider, new ContactFilter2D(), results);
         foreach (var r in results)
         {
-            Rigidbody2D rb2 = r.gameObject.GetComponent<Rigidbody2D>();
-            if (rb2 != null)
-            {
-                var explosionDir = rb2.transform.position - transform.position;
-                var explosionDistance = explosionDir.magnitude;
-
-                explosionDir /= explosionDistance;
-
-                rb2.AddForce(Mathf.Lerp(0, 100f, (1 - explosionDistance)) * explosionDir, ForceMode2D.Impulse);
-            }
-
             Harmable harmable = r.gameObject.GetComponent<Harmable>();
             if (harmable != null)
             {
