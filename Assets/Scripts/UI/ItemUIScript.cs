@@ -35,6 +35,24 @@ public class ItemUIScript : MonoBehaviour
         itemDropScript.itemCount = itemData.count;
         itemDropScript.pickupDelay = 3f;
 
+        var parent = this.gameObject.transform.parent;
+
+        bool flag = false;
+
+        foreach (Transform t in parent)
+        {
+            if (t == this.gameObject.transform)
+            {
+                flag = true;
+            }
+            else if (flag)
+            {
+                t.GetComponent<ItemUIScript>().itemIndex--;
+            }
+        }
+
+        MainPlayer.mainPlayer.GetComponent<PlayerInventory>().RemoveItemAt(itemIndex);
+
         GameObject.Destroy(this.gameObject);
     }
 }

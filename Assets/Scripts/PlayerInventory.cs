@@ -105,6 +105,10 @@ public class PlayerInventory : MonoBehaviour
     {
         return items;
     }
+    public void RemoveItemAt(int index)
+    {
+        items.RemoveAt(index);
+    }
 }
 
 [Serializable]

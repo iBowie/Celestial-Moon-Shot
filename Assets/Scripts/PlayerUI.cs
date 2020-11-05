@@ -37,11 +37,14 @@ public class PlayerUI : MonoBehaviour
             foreach (Transform t in inventoryPanelContent.transform)
                 GameObject.Destroy(t.gameObject);
 
+            int index = 0;
+
             foreach (var i in inventory.GetAllItems())
             {
                 var obj = GameObject.Instantiate(inventoryPanelItemPrefab, inventoryPanelContent.transform);
                 ItemUIScript itemUIScript = obj.GetComponent<ItemUIScript>();
                 itemUIScript.itemData = i;
+                itemUIScript.itemIndex = index++;
             }
 
             inventoryPanel.SetActive(true);
