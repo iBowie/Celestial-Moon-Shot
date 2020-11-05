@@ -965,85 +965,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 605325342}
   m_CullTransparentMesh: 0
---- !u!1 &673330002
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 673330003}
-  - component: {fileID: 673330004}
-  - component: {fileID: 673330005}
-  m_Layer: 5
-  m_Name: Content
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &673330003
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673330002}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1068536622}
-  m_Father: {fileID: 46128383}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -866, y: 120}
-  m_Pivot: {x: 0, y: 1}
---- !u!114 &673330004
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673330002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
---- !u!114 &673330005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 673330002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
---- !u!43 &695121682
+--- !u!43 &662815661
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1207,6 +1129,84 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &673330002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 673330003}
+  - component: {fileID: 673330004}
+  - component: {fileID: 673330005}
+  m_Layer: 5
+  m_Name: Content
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &673330003
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673330002}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1068536622}
+  m_Father: {fileID: 46128383}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -866, y: 120}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &673330004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673330002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
+--- !u!114 &673330005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673330002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &710732422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1843,7 +1843,7 @@ MonoBehaviour:
   - itemData:
       id: 0
       displayName: Test Gun
-      description: 
+      description: Shoots spheres. Pretty cursed, huh?
       texture: {fileID: 21300000, guid: d3c819560baf6964cabbf963404f8537, type: 3}
       prefab: {fileID: 127254906433608123, guid: 684ffcbaa06dd5b4bb9c2f7756d07e37, type: 3}
       maxCount: 1
@@ -1852,7 +1852,7 @@ MonoBehaviour:
   - itemData:
       id: 1
       displayName: Test Melee
-      description: 
+      description: Does literally nothing, i don't know why does it even exists
       texture: {fileID: 21300000, guid: ef46d5a37fbe4524e8cf3b13877f9ecf, type: 3}
       prefab: {fileID: 4263176441179571638, guid: ace97e5750350b247849ae5205514c8b, type: 3}
       maxCount: 1
@@ -1861,7 +1861,7 @@ MonoBehaviour:
   - itemData:
       id: 2
       displayName: Laser Blaster
-      description: 
+      description: Pew pew
       texture: {fileID: 21300000, guid: d3c819560baf6964cabbf963404f8537, type: 3}
       prefab: {fileID: 7624617406144165408, guid: f2bd27dba7ed79248ac7c9a27c670916, type: 3}
       maxCount: 1
@@ -1870,7 +1870,7 @@ MonoBehaviour:
   - itemData:
       id: 3
       displayName: Test Engine
-      description: 
+      description: Accelerates moon by 1 m/s, doesn't have any texture on it
       texture: {fileID: 21300000, guid: 4a0dd90f5481bc84d9814350e1bb1dbb, type: 3}
       prefab: {fileID: 8406658354466234176, guid: d081657bb0d22cb4abe52d1d0531e62a, type: 3}
       maxCount: 1
@@ -1879,7 +1879,8 @@ MonoBehaviour:
   - itemData:
       id: 4
       displayName: Iron
-      description: 
+      description: Most common element on Earth, but we're not on Earth here, so
+        keep it
       texture: {fileID: 21300000, guid: af7e179a32de4be43be338294ae391c2, type: 3}
       prefab: {fileID: 0}
       maxCount: 999
@@ -3083,7 +3084,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581509625}
-  m_Mesh: {fileID: 695121682}
+  m_Mesh: {fileID: 662815661}
 --- !u!4 &1581509629
 Transform:
   m_ObjectHideFlags: 0
