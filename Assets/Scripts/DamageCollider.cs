@@ -17,7 +17,7 @@ public class DamageCollider : MonoBehaviour
 
             if (harmable != null)
             {
-                Vector2 dir = (harmable.transform.position - transform.position).normalized;
+                Vector2 dir = (harmable.transform.position - transform.position + Vector3.up).normalized;
 
                 harmable.Harm(damage, dir * knockback);
             }
