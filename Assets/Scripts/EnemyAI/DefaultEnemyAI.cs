@@ -17,7 +17,8 @@
         if (PauseManager.IsPaused)
             return;
 
-        bool doJump = movementController.HandRotation.transform.rotation.eulerAngles.z >= 45f;
+        // bool doJump = movementController.HandRotation.transform.rotation.eulerAngles.z >= 45f;
+        bool doJump = false;
 
         if (movementController.IsFacingRight)
         {
