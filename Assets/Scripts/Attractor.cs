@@ -13,12 +13,13 @@ public class Attractor : MonoBehaviour
         {
             Vector2 direction = this.transform.position - a.transform.position;
 
-            float distance = direction.sqrMagnitude;
+            // float distance = direction.sqrMagnitude;
 
-            if (distance == 0)
-                return;
+            // if (distance == 0)
+            //    return;
 
-            float forceMagnitude = G * (mass * a.rigid.mass) / distance;
+            // float forceMagnitude = G * (mass * a.rigid.mass) / distance;
+            float forceMagnitude = 9.807f;
             Vector2 force = direction.normalized * forceMagnitude * a.rigid.gravityScale;
 
             a.rigid.AddForce(force);
