@@ -17,6 +17,7 @@ public class PlayerMovementController : MonoBehaviour
     private bool m_Grounded;            // Whether or not the player is grounded.
     private Rigidbody2D m_Rigidbody2D;
     private bool m_FacingRight = true;  // For determining which way the player is currently facing.
+    public bool IsFacingRight => m_FacingRight;
 
     [Header("Events")]
     [Space]
