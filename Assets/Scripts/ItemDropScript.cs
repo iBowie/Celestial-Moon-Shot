@@ -1,17 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteInEditMode]
 public class ItemDropScript : MonoBehaviour, IHasToolTip
 {
     private InventoryItemData itemData;
+    private float dropTime; 
 
     public ushort itemId;
     public ulong itemCount;
     public SpriteRenderer spriteRenderer;
+    public float pickupDelay;
 
     public string ToolTip => itemData == null ? "" : itemData.displayName;
+
+    private void Start()
+    {
+        dropTime = Time.time;
+    }
 
     private void Update()
     {
@@ -26,15 +31,21 @@ public class ItemDropScript : MonoBehaviour, IHasToolTip
         spriteRenderer.sprite = itemData.texture;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (Application.isPlaying)
         {
-            var inv = collision.gameObject.GetComponent<PlayerInventory>();
-            if (inv != null)
+            if (!PauseManager.IsPaused)
             {
-                inv.AddItem(itemId, itemCount);
-                Destroy(gameObject);
+                if (Time.time - dropTime >= pickupDelay)
+                {
+                    var inv = collision.gameObject.GetComponent<PlayerInventory>();
+                    if (inv != null)
+                    {
+                        inv.AddItem(itemId, itemCount);
+                        Destroy(gameObject);
+                    }
+                }
             }
         }
     }
