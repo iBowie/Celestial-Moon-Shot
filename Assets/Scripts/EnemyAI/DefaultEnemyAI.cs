@@ -11,6 +11,9 @@
 
     private void FixedUpdate()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         if (movementController.IsFacingRight)
         {
             movementController.Move(1.0f, false, false);
