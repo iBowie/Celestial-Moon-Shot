@@ -27,6 +27,9 @@ public class MoonSpeedController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         totalDistance += (currentSpeed / 50f);
 
         toDisplay(totalDistance, out float disValue, out string disUnits);

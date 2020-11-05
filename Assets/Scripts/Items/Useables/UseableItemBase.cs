@@ -8,6 +8,9 @@ public class UseableItemBase : ItemBase
 
     private void Update()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         if (Input.GetMouseButtonDown(0))
             OnLeftButtonDown();
         if (Input.GetMouseButton(0))

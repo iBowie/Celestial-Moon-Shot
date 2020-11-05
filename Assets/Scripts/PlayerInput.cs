@@ -57,33 +57,36 @@ public class PlayerInput : MonoBehaviour
         animator.SetFloat("Speed", Mathf.Abs(move));
         animator.SetBool("IsSprinting", sprint);
 
-        var scr = Input.GetAxis("Mouse ScrollWheel");
-
-        if (scr > 0)
+        if (!PauseManager.IsPaused)
         {
-            if (inv.UniqueItems > 0)
+            var scr = Input.GetAxis("Mouse ScrollWheel");
+
+            if (scr > 0)
             {
-                if (inv.selectedItem > 0)
+                if (inv.UniqueItems > 0)
                 {
-                    inv.selectedItem--;
-                }
-                else
-                {
-                    inv.selectedItem = inv.UniqueItems - 1;
+                    if (inv.selectedItem > 0)
+                    {
+                        inv.selectedItem--;
+                    }
+                    else
+                    {
+                        inv.selectedItem = inv.UniqueItems - 1;
+                    }
                 }
             }
-        }
-        else if (scr < 0)
-        {
-            if (inv.UniqueItems > 0)
+            else if (scr < 0)
             {
-                if (inv.selectedItem < inv.UniqueItems - 1)
+                if (inv.UniqueItems > 0)
                 {
-                    inv.selectedItem++;
-                }
-                else
-                {
-                    inv.selectedItem = 0;
+                    if (inv.selectedItem < inv.UniqueItems - 1)
+                    {
+                        inv.selectedItem++;
+                    }
+                    else
+                    {
+                        inv.selectedItem = 0;
+                    }
                 }
             }
         }
@@ -99,6 +102,9 @@ public class PlayerInput : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         pmc.Move(move, sprint, jump);
     }
 

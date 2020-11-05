@@ -20,6 +20,9 @@ public class UseableItemGun : UseableItemBase
 
     public override void OnLeftButtonStay()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         if (!autoAttack)
             return;
 
@@ -32,6 +35,9 @@ public class UseableItemGun : UseableItemBase
     }
     public override void OnLeftButtonDown()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         if (autoAttack)
             return;
 

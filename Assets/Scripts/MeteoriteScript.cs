@@ -55,6 +55,7 @@ public class MeteoriteScript : MonoBehaviour
                 dp.transform.position = dpPos;
 
                 dropScript.itemId = i;
+                dropScript.itemCount = 1;
             }
         }
 

@@ -79,4 +79,22 @@ public class PlayerUI : MonoBehaviour
             isCraftingOpen = false;
         }
     }
+
+    private void Update()
+    {
+        if (PauseManager.IsPaused)
+        {
+            if (!isInventoryOpen && !isCraftingOpen)
+            {
+                PauseManager.Resume();
+            }
+        }
+        else
+        {
+            if (isInventoryOpen || isCraftingOpen)
+            {
+                PauseManager.Pause();
+            }
+        }
+    }
 }

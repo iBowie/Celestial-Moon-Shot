@@ -40,6 +40,9 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         Vector3 pos = this.transform.position;
 
         var dist = (pos - lastDistance).magnitude;

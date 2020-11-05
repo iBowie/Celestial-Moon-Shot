@@ -19,7 +19,10 @@ public class MeteoriteSpawnerScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.Rotate(new Vector3(0, 0, 1f), Space.Self);
+        if (PauseManager.IsPaused)
+            return;
+
+        transform.Rotate(new Vector3(0, 0, Random.Range(-2f, 2f)), Space.Self);
 
         if (Time.time - lastMeteorite >= delay)
         {

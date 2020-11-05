@@ -8,6 +8,9 @@ public class ParallaxScript : MonoBehaviour
     
     void Update()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         var newPos = target.position * multiplier;
         if (lockX)
             newPos.x = transform.position.x;

@@ -48,6 +48,9 @@ namespace Assets.Scripts.Items.Useables.Build
 
         private void FixedUpdate()
         {
+            if (PauseManager.IsPaused)
+                return;
+
             var target = controller.target;
 
             var targetPos = target.transform.position;
@@ -94,6 +97,9 @@ namespace Assets.Scripts.Items.Useables.Build
 
         public override void OnLeftButtonDown()
         {
+            if (PauseManager.IsPaused)
+                return;
+
             if (isPossible)
             {
                 var build = GameObject.Instantiate(buildPrefab);

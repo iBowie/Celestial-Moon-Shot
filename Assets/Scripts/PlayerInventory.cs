@@ -25,6 +25,9 @@ public class PlayerInventory : MonoBehaviour
 
     private void Update()
     {
+        if (PauseManager.IsPaused)
+            return;
+
         if (selectedItem == -1)
         {
             if (items.Count > 0)
