@@ -48,15 +48,25 @@ public class ItemResolver : MonoBehaviour
         public List<IDAmountPair> input;
         public List<IDAmountPair> output;
 
-        public bool IsCraftable(PlayerInventory inventory)
+        public EIsCraftableResult IsCraftable(PlayerInventory inventory)
         {
             foreach (var i in input)
             {
                 if (inventory.CountItem(i.id) < i.amount)
-                    return false;
+                {
+                    return EIsCraftableResult.NO_RESOURCES;
+                }
             }
 
-            return true;
+            foreach (var i in output)
+            {
+                if (!inventory.CanFit(i.id, i.amount))
+                {
+                    return EIsCraftableResult.NO_SPACE;
+                }
+            }
+
+            return EIsCraftableResult.OK;
         }
         public void Craft(PlayerInventory inventory)
         {
@@ -75,6 +85,12 @@ public class ItemResolver : MonoBehaviour
         {
             public ushort id;
             public ulong amount;
+        }
+        public enum EIsCraftableResult
+        {
+            OK,
+            NO_RESOURCES,
+            NO_SPACE
         }
     }
 }

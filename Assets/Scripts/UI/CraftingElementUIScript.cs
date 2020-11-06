@@ -10,8 +10,14 @@ public class CraftingElementUIScript : MonoBehaviour
     public Transform inputItemsPanel;
     public Transform outputItemsPanel;
 
+    public Transform noSpaceObject;
+    public Transform noResourcesObject;
+
     private void Start()
     {
+        noSpaceObject.gameObject.SetActive(false);
+        noResourcesObject.gameObject.SetActive(false);
+
         inputItemsPanel.gameObject.DestroyAllChildren();
         foreach (var i in craftRecipe.input)
         {
@@ -32,9 +38,22 @@ public class CraftingElementUIScript : MonoBehaviour
 
     public void DoCraft()
     {
-        if (craftRecipe.IsCraftable(MainPlayer.mainPlayer.inventory))
+        noSpaceObject.gameObject.SetActive(false);
+        noResourcesObject.gameObject.SetActive(false);
+
+        var result = craftRecipe.IsCraftable(MainPlayer.mainPlayer.inventory);
+
+        switch (result)
         {
-            craftRecipe.Craft(MainPlayer.mainPlayer.inventory);
+            case ItemResolver.ItemResolver_CraftRecipe.EIsCraftableResult.OK:
+                craftRecipe.Craft(MainPlayer.mainPlayer.inventory);
+                break;
+            case ItemResolver.ItemResolver_CraftRecipe.EIsCraftableResult.NO_RESOURCES:
+                noResourcesObject.gameObject.SetActive(true);
+                break;
+            case ItemResolver.ItemResolver_CraftRecipe.EIsCraftableResult.NO_SPACE:
+                noSpaceObject.gameObject.SetActive(true);
+                break;
         }
     }
 }

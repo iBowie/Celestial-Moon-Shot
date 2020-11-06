@@ -108,6 +108,16 @@ public class PlayerInventory : MonoBehaviour
     {
         items.RemoveAt(index);
     }
+    public bool CanFit(ushort id, ulong amount)
+    {
+        foreach (var i in items)
+        {
+            if (i.id == id && i.count + amount > i.maxCount)
+                return false;
+        }
+
+        return true;
+    }
 }
 
 [Serializable]
