@@ -10,6 +10,9 @@ public class PlayerUI : MonoBehaviour
     public GameObject inventoryPanelContent;
     public GameObject inventoryPanelItemPrefab;
 
+    public GameObject craftingPanelContent;
+    public GameObject craftingPanelItemPrefab;
+
     private bool isInventoryOpen, isCraftingOpen;
 
     public void ToggleInventory()
@@ -34,8 +37,7 @@ public class PlayerUI : MonoBehaviour
 
         if (!isInventoryOpen)
         {
-            foreach (Transform t in inventoryPanelContent.transform)
-                GameObject.Destroy(t.gameObject);
+            inventoryPanelContent.DestroyAllChildren();
 
             int index = 0;
 
@@ -68,6 +70,15 @@ public class PlayerUI : MonoBehaviour
 
         if (!isCraftingOpen)
         {
+            craftingPanelContent.DestroyAllChildren();
+
+            foreach (var i in ItemResolver.Instance.crafts)
+            {
+                var obj = GameObject.Instantiate(craftingPanelItemPrefab, craftingPanelContent.transform);
+                CraftingElementUIScript elementUIScript = obj.GetComponent<CraftingElementUIScript>();
+                elementUIScript.craftRecipe = i;
+            }
+
             craftingPanel.SetActive(true);
 
             isCraftingOpen = true;
@@ -98,6 +109,16 @@ public class PlayerUI : MonoBehaviour
             {
                 PauseManager.Pause();
             }
+        }
+    }
+}
+public static class GameObjectExtensions
+{
+    public static void DestroyAllChildren(this GameObject gameObject)
+    {
+        foreach (Transform t in gameObject.transform)
+        {
+            GameObject.Destroy(t.gameObject);
         }
     }
 }
