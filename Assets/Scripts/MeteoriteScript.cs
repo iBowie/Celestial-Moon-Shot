@@ -5,13 +5,12 @@ public class MeteoriteScript : MonoBehaviour
 {
     private Rigidbody2D rb;
     public Collider2D explodeCollider;
-    public GameObject dropPrefab;
-    public byte[] items;
+    public ushort[] items;
 
     void Start()
     {
         if (items == null)
-            items = new byte[0];
+            items = new ushort[0];
 
         rb = GetComponent<Rigidbody2D>();
         rb.AddRelativeForce(Vector2.down * 10f, ForceMode2D.Impulse);
@@ -34,17 +33,7 @@ public class MeteoriteScript : MonoBehaviour
 
         foreach (var i in items)
         {
-            if (ItemResolver.Instance.TryGetItem(i, out _))
-            {
-                var dp = GameObject.Instantiate(dropPrefab);
-                var dropScript = dp.GetComponent<ItemDropScript>();
-
-                var dpPos = transform.position;
-                dp.transform.position = dpPos;
-
-                dropScript.itemId = i;
-                dropScript.itemCount = 1;
-            }
+            ItemResolver.Instance.SpawnItem(transform.position, i, 1);
         }
 
         Destroy(this.gameObject);

@@ -18,6 +18,7 @@ public class ItemResolver : MonoBehaviour
 
     public List<ItemResolver_Entry> items;
     public List<ItemResolver_CraftRecipe> crafts;
+    public GameObject itemDropPrefab;
 
     public bool TryGetItem(ushort id, out InventoryItemData iid)
     {
@@ -91,6 +92,23 @@ public class ItemResolver : MonoBehaviour
             OK,
             NO_RESOURCES,
             NO_SPACE
+        }
+    }
+
+    public void SpawnItem(Vector3 position, ushort id, ulong count = 1)
+    {
+        if (count < 1)
+            return;
+
+        if (TryGetItem(id, out _))
+        {
+            var dp = GameObject.Instantiate(itemDropPrefab);
+            var dropScript = dp.GetComponent<ItemDropScript>();
+
+            dp.transform.position = position;
+
+            dropScript.itemId = id;
+            dropScript.itemCount = count;
         }
     }
 }
