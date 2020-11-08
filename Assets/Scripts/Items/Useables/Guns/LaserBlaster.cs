@@ -18,6 +18,7 @@ public class LaserBlaster : UseableItemGun
     private float heat = 0f;
     private float lastCool = 0f;
     private float lastShot = 0f;
+    private float lastOverheatDisplay = 0f;
 
     private void LaserBlaster_OnFired(object sender, System.EventArgs e)
     {
@@ -35,6 +36,55 @@ public class LaserBlaster : UseableItemGun
             heat = BitConverter.ToSingle(data, 0);
             lastShot = Time.time;
             lastCool = Time.time;
+        }
+    }
+    public override string StatusText
+    {
+        get
+        {
+            if (heat >= 1f)
+            {
+                if (Time.time - lastOverheatDisplay >= 1f)
+                {
+                    if (Time.time - lastOverheatDisplay >= 2f)
+                    {
+                        lastOverheatDisplay = Time.time;
+                    }
+
+                    return "<color=red>!! OVERHEAT !!</color>";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            else
+            {
+                if (heat > 0)
+                {
+                    if (Time.time - lastShot >= 1f)
+                    {
+                        return "<color=cyan>Cooling Down</color>";
+                    }
+                }
+
+                if (heat <= 0.25f)
+                {
+                    return "Heat: <color=green>OK</color>";
+                }
+                else if (heat <= 0.5f)
+                {
+                    return "Heat: <color=#BC4B00>Warm</color>";
+                }
+                else if (heat <= 0.75f)
+                {
+                    return "Heat: <color=#BF0000>Hot</color>";
+                }
+                else
+                {
+                    return $"Heat: <color=#FF0000>Flaming Hot</color>";
+                }
+            }
         }
     }
     protected override void FixedUpdate()

@@ -28,4 +28,6 @@ public class ItemBase : MonoBehaviour
         controller.inventory.selectedItem = -1;
         controller.SetCurrentItem(null);
     }
+
+    public virtual string StatusText => "";
 }

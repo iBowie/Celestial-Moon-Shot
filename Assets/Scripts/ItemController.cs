@@ -8,6 +8,7 @@ public class ItemController : MonoBehaviour
     public InventoryItemData currentItemData;
     public TargetItem target;
     public Text nameText;
+    public Text statusText;
     public PlayerInventory inventory;
 
     // Update is called once per frame
@@ -15,12 +16,16 @@ public class ItemController : MonoBehaviour
     {
         if (currentItem != null)
         {
+            statusText.text = currentItem.StatusText;
+
             target.distance = currentItem.reachDistance;
 
             currentItem.controller = this;
         }
         else
         {
+            statusText.text = "";
+
             target.distance = null;
         }
     }
