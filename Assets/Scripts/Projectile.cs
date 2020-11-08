@@ -5,11 +5,18 @@ public class Projectile : MonoBehaviour
 {
     public float damage;
     public float travelDistance;
+    public float slowdownFactor;
     public LayerMask destroyLayerMask;
     public string[] affectedTags;
     public float knockback;
 
     private Vector3 lastDistance;
+    private Rigidbody2D rig;
+
+    private void Awake()
+    {
+        rig = GetComponent<Rigidbody2D>();
+    }
 
     private void Start()
     {
@@ -26,6 +33,14 @@ public class Projectile : MonoBehaviour
                 Vector2 dir = (harmable.transform.position - transform.position).normalized;
 
                 harmable.Harm(damage, dir * knockback);
+
+                if (rig != null && slowdownFactor != 0)
+                {
+                    float mod = 1f / slowdownFactor;
+
+                    rig.velocity *= mod;
+                    travelDistance *= mod;
+                }
             }
         }
 
