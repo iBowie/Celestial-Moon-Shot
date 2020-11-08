@@ -28,10 +28,10 @@ public class LaserBlaster : UseableItemGun
 
     protected override void Start()
     {
-        if (controller.currentItemData.customData != null)
-        {
-            byte[] data = controller.currentItemData.customData;
+        byte[] data = controller.currentItemData.customData;
 
+        if (data != null && data.Length > 0)
+        {
             heat = BitConverter.ToSingle(data, 0);
             lastShot = Time.time;
             lastCool = Time.time;
