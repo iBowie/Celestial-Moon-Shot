@@ -6,7 +6,7 @@ public class LootTable
 {
     public LootTable_Entry[] entries;
 
-    public byte[] Resolve()
+    public ushort[] Resolve()
     {
         float max = entries.Sum(d => d.chance);
 
@@ -17,12 +17,12 @@ public class LootTable
         var entry = resolveEntry(ref value, ref offset);
 
         if (entry == null)
-            return new byte[0];
+            return new ushort[0];
         else
         {
             var count = Random.Range(entry.minCount, entry.maxCount);
 
-            byte[] res = new byte[count];
+            ushort[] res = new ushort[count];
 
             for (int i = 0; i < count; i++)
             {
