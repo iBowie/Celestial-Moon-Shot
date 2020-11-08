@@ -406,14 +406,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7ab7937c99237479efe7137596194c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
-  maxHealth: 1000
+  health: 400
+  maxHealth: 400
   knockbackResistant: 1
   hasInvincibilityTime: 0
   healthBarImage: {fileID: 4804409116315671742}
   audioSource: {fileID: 8526112113851509868}
   hitSound: {fileID: 8300000, guid: 21d7365767844ce48b44fe06bf3ece25, type: 3}
   rigid: {fileID: 4804409116230467479}
+  cameraShake: {fileID: 0}
   OnHarm:
     m_PersistentCalls:
       m_Calls: []
