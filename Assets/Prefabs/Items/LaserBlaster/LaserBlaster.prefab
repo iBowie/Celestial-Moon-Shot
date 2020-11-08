@@ -231,6 +231,7 @@ MonoBehaviour:
   fireSound: {fileID: 8300000, guid: 5287f222d71a42f41b63e6622a9437bc, type: 3}
   bulletVelocity: 0.25
   fireStart: {fileID: 2056823334619370870}
+  iconRenderer: {fileID: 1753833819207574605}
 --- !u!1 &7725240871369099980
 GameObject:
   m_ObjectHideFlags: 0

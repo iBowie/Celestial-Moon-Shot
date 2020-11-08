@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class UseableItemGun : UseableItemBase
 {
     private float lastFired;
     private AudioSource audioSource;
+
+    protected event EventHandler OnFired;
 
     public bool autoAttack;
     public float fireDelay;
@@ -69,5 +72,7 @@ public class UseableItemGun : UseableItemBase
         nObj.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
 
         audioSource.PlayOneShot(fireSound);
+
+        OnFired?.Invoke(this, new EventArgs());
     }
 }
