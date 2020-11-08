@@ -315,6 +315,7 @@ MonoBehaviour:
   audioSource: {fileID: 2142065006490422925}
   hitSound: {fileID: 8300000, guid: 21d7365767844ce48b44fe06bf3ece25, type: 3}
   rigid: {fileID: 3460555153391402143}
+  cameraShake: {fileID: 0}
   OnHarm:
     m_PersistentCalls:
       m_Calls: []
