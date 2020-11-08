@@ -18,6 +18,7 @@ public class Harmable : MonoBehaviour, IHasToolTip
     public AudioSource audioSource;
     public AudioClip hitSound;
     public Rigidbody2D rigid;
+    public CameraShake cameraShake;
 
     private float lastHealth, lastMaxHealth;
     private float lastHit;
@@ -54,6 +55,12 @@ public class Harmable : MonoBehaviour, IHasToolTip
         }
 
         OnHarm.Invoke(damage);
+
+        if (cameraShake != null)
+        {
+            cameraShake.shakeAmount = Mathf.Clamp01(damage / maxHealth);
+            cameraShake.shakeDuration = 0.5f;
+        }
 
         health -= damage;
 
