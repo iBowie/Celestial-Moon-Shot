@@ -5,6 +5,7 @@ using UnityEngine.UI;
 [ExecuteInEditMode]
 public class Harmable : MonoBehaviour, IHasToolTip
 {
+    public string displayName;
     public float health;
     public float maxHealth;
     public bool knockbackResistant;
@@ -12,7 +13,20 @@ public class Harmable : MonoBehaviour, IHasToolTip
 
     public float healthPercentage => health / maxHealth;
 
-    public string ToolTip => $"{health:N0}/{maxHealth:N0}";
+    public string ToolTip
+    {
+        get
+        {
+            if (string.IsNullOrEmpty(displayName))
+            {
+                return $"{health:N0}/{maxHealth:N0}";
+            }
+            else
+            {
+                return $"{displayName}: {health:N0}/{maxHealth:N0}";
+            }
+        }
+    }
 
     public Image healthBarImage;
     public AudioSource audioSource;

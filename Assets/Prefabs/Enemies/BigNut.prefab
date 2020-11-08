@@ -406,6 +406,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7ab7937c99237479efe7137596194c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayName: Big Nut
   health: 400
   maxHealth: 400
   knockbackResistant: 1
