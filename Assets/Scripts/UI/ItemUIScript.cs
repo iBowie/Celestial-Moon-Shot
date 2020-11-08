@@ -3,7 +3,6 @@ using UnityEngine.UI;
 
 public class ItemUIScript : MonoBehaviour
 {
-    public GameObject itemDropPrefab;
     public InventoryItemData itemData;
     public int itemIndex;
     public Text nameText;
@@ -27,13 +26,7 @@ public class ItemUIScript : MonoBehaviour
     }
     public void Drop()
     {
-        var obj = GameObject.Instantiate(itemDropPrefab);
-
-        obj.transform.position = MainPlayer.mainPlayer.transform.position;
-        ItemDropScript itemDropScript = obj.GetComponent<ItemDropScript>();
-        itemDropScript.itemId = itemData.id;
-        itemDropScript.itemCount = itemData.count;
-        itemDropScript.pickupDelay = 3f;
+        ItemResolver.Instance.SpawnItem(MainPlayer.mainPlayer.transform.position, itemData.id, itemData.count, 3f);
 
         var parent = this.gameObject.transform.parent;
 

@@ -95,7 +95,7 @@ public class ItemResolver : MonoBehaviour
         }
     }
 
-    public void SpawnItem(Vector3 position, ushort id, ulong count = 1)
+    public void SpawnItem(Vector3 position, ushort id, ulong count = 1, float pickupDelay = 0f)
     {
         if (count < 1)
             return;
@@ -109,6 +109,7 @@ public class ItemResolver : MonoBehaviour
 
             dropScript.itemId = id;
             dropScript.itemCount = count;
+            dropScript.pickupDelay = pickupDelay;
         }
     }
 }
