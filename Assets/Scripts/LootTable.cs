@@ -49,3 +49,42 @@ public class LootTable
         return entries.LastOrDefault();
     }
 }
+[System.Serializable]
+public class EnemyTable
+{
+    public EnemyTable_Entry[] entries;
+
+    public GameObject Resolve()
+    {
+        float max = entries.Sum(d => d.chance);
+
+        float offset = 0;
+
+        float value = Random.Range(0, max);
+
+        var entry = resolveEntry(ref value, ref offset);
+
+        if (entry == null)
+            return null;
+        else
+        {
+            return entry.prefab;
+        }
+    }
+    private EnemyTable_Entry resolveEntry(ref float value, ref float offset)
+    {
+        foreach (var item in entries)
+        {
+            if (value <= item.chance + offset)
+            {
+                return item;
+            }
+            else
+            {
+                offset += item.chance;
+            }
+        }
+
+        return entries.LastOrDefault();
+    }
+}

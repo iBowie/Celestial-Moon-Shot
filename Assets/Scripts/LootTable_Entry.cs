@@ -1,4 +1,6 @@
-﻿[System.Serializable]
+﻿using UnityEngine;
+
+[System.Serializable]
 public class LootTable_Entry
 {
     public LootTable_Entry()
@@ -11,4 +13,15 @@ public class LootTable_Entry
     public float chance;
     public byte minCount;
     public byte maxCount;
+}
+[System.Serializable]
+public class EnemyTable_Entry
+{
+    public EnemyTable_Entry()
+    {
+
+    }
+
+    public GameObject prefab;
+    public float chance;
 }
