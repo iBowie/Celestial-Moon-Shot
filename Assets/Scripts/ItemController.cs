@@ -34,11 +34,14 @@ public class ItemController : MonoBehaviour
 
         if (iid != null)
         {
+            currentItemData = iid;
+
             if (iid.isUseable)
             {
                 currentItem = GameObject.Instantiate<GameObject>(iid.prefab, this.transform).GetComponent<ItemBase>();
+
+                currentItem.controller = this;
             }
-            currentItemData = iid;
 
             nameText.text = $"Current Item: {iid.displayName}";
         }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class LaserBlaster : UseableItemGun
 {
@@ -25,7 +26,18 @@ public class LaserBlaster : UseableItemGun
         lastShot = Time.time;
     }
 
-    private void FixedUpdate()
+    protected override void Start()
+    {
+        if (controller.currentItemData.customData != null)
+        {
+            byte[] data = controller.currentItemData.customData;
+
+            heat = BitConverter.ToSingle(data, 0);
+            lastShot = Time.time;
+            lastCool = Time.time;
+        }
+    }
+    protected override void FixedUpdate()
     {
         if (heat > 0)
         {
@@ -41,5 +53,9 @@ public class LaserBlaster : UseableItemGun
         float rVal = 1f - val;
 
         iconRenderer.color = new Color(1f, rVal, rVal);
+
+        byte[] heatBytes = BitConverter.GetBytes(heat);
+
+        controller.currentItemData.customData = heatBytes;
     }
 }

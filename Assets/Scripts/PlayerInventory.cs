@@ -121,7 +121,7 @@ public class PlayerInventory : MonoBehaviour
 }
 
 [Serializable]
-public class InventoryItemData : ICloneable
+public class InventoryItemData
 {
     public ushort id;
     public string displayName;
@@ -131,19 +131,5 @@ public class InventoryItemData : ICloneable
     public ulong maxCount;
     public ulong count;
     public bool isUseable;
-
-    public object Clone()
-    {
-        return new InventoryItemData()
-        {
-            id = id,
-            displayName = displayName,
-            description = description,
-            texture = texture,
-            prefab = prefab,
-            maxCount = maxCount,
-            count = count,
-            isUseable = isUseable
-        };
-    }
+    public byte[] customData;
 }

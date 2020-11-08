@@ -18,6 +18,10 @@ public class ItemBase : MonoBehaviour
 
     }
 
+    protected virtual void Start() { }
+    protected virtual void FixedUpdate() { }
+    protected virtual void OnDestroy() { }
+
     public void Consume(ulong amount = 1)
     {
         controller.inventory.RemoveItem(controller.inventory.itemController.currentItemData.id, amount);
