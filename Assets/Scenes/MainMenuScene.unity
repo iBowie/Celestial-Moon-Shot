@@ -632,7 +632,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Made for Game Off 2020
 
-    by BowieD and Dumes'
+    by BowieD'
 --- !u!222 &1006683386
 CanvasRenderer:
   m_ObjectHideFlags: 0
