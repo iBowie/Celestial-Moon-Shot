@@ -10,6 +10,7 @@ public class Harmable : MonoBehaviour, IHasToolTip
     public float maxHealth;
     public bool knockbackResistant;
     public bool hasInvincibilityTime;
+    public bool regenOverTime;
 
     public float healthPercentage => health / maxHealth;
 
@@ -35,7 +36,7 @@ public class Harmable : MonoBehaviour, IHasToolTip
     public CameraShake cameraShake;
 
     private float lastHealth, lastMaxHealth;
-    private float lastHit;
+    private float lastHit, lastRegen;
 
     private void Start()
     {
@@ -108,6 +109,19 @@ public class Harmable : MonoBehaviour, IHasToolTip
 
         lastMaxHealth = maxHealth;
         lastHealth = health;
+    }
+
+    private void FixedUpdate()
+    {
+        if (regenOverTime)
+        {
+            if (Time.time - lastHit >= 10f && Time.time - lastRegen >= 3f && health < maxHealth)
+            {
+                lastRegen = Time.time;
+
+                health = Mathf.Clamp(health + maxHealth * 0.05f, 0f, maxHealth);
+            }
+        }
     }
 
     void UpdateHealthBar()
