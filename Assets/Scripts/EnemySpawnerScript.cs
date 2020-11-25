@@ -13,7 +13,9 @@ public class EnemySpawnerScript : MonoBehaviour
     public EnemyTable table;
 
     [SerializeField]
+#if Editor
     [ReadOnly]
+#endif
     private float spawnTime;
 
     private Animator warnAnimator;
