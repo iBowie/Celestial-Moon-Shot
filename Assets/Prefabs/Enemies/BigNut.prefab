@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 1685489505}
   - component: {fileID: 1685489504}
   - component: {fileID: 8526112113851509868}
+  - component: {fileID: 8998873371548609954}
   m_Layer: 9
   m_Name: BigNut
   m_TagString: Enemy
@@ -421,7 +422,19 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8998873371548609954}
+        m_TargetAssemblyTypeName: EnemyDrop, Assembly-CSharp
+        m_MethodName: ForceDrop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4804409116230467497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,6 +615,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8998873371548609954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4804409116230467472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52ed44274f20b8448edfe4feeb8fe9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table:
+    entries:
+    - id: 4
+      chance: 5
+      minCount: 4
+      maxCount: 8
+    - id: 5
+      chance: 10
+      minCount: 4
+      maxCount: 8
 --- !u!1 &4804409116315671736
 GameObject:
   m_ObjectHideFlags: 0

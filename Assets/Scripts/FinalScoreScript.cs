@@ -8,18 +8,16 @@ public class FinalScoreScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        float spdValue, disValue;
-        string spdUnits, disUnits;
+        float disValue;
+        string disUnits;
 
-        MoonSpeedController.toDisplay(MoonSpeedController.currentSpeed, out spdValue, out spdUnits);
         MoonSpeedController.toDisplay(MoonSpeedController.totalDistance, out disValue, out disUnits);
 
-        scoreText.text = $"Max Reached Speed: {spdValue:0.##} {spdUnits}\nTotal Distance: {disValue:0.##} {disUnits}";
+        scoreText.text = $"Total Distance: {disValue:0.##} {disUnits}";
     }
 
     public void Restart()
     {
         SceneManager.LoadScene(1);
-        SceneManager.SetActiveScene(SceneManager.GetSceneAt(1));
     }
 }

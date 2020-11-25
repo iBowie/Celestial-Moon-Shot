@@ -47,7 +47,6 @@ public class MoonSpeedController : MonoBehaviour
     public void GoToFinalScore()
     {
         SceneManager.LoadScene(2);
-        SceneManager.SetActiveScene(SceneManager.GetSceneAt(2));
     }
 
     public static void toDisplay(float value, out float visibleValue, out string units)

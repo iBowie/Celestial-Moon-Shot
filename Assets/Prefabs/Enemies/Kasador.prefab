@@ -142,6 +142,7 @@ GameObject:
   - component: {fileID: 8262676162894660713}
   - component: {fileID: 8262676162894660712}
   - component: {fileID: 2142065006490422925}
+  - component: {fileID: 5431511177754355033}
   m_Layer: 9
   m_Name: Kasador
   m_TagString: Enemy
@@ -322,7 +323,19 @@ MonoBehaviour:
       m_Calls: []
   OnDeath:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5431511177754355033}
+        m_TargetAssemblyTypeName: EnemyDrop, Assembly-CSharp
+        m_MethodName: ForceDrop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3460555153391402145
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,6 +504,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5431511177754355033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3460555153391402136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c52ed44274f20b8448edfe4feeb8fe9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  table:
+    entries:
+    - id: 4
+      chance: 10
+      minCount: 1
+      maxCount: 4
+    - id: 5
+      chance: 5
+      minCount: 1
+      maxCount: 4
 --- !u!1 &3460555153445150640
 GameObject:
   m_ObjectHideFlags: 0
